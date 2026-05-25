@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #03050a;
+  --surface: #080d14;
+  --surface2: #0e1520;
+  --surface3: #141e2e;
+  --border: #1a2332;
+  --border2: #243044;
+  --accent: #6d28d9;
+  --accent-light: #8b5cf6;
+  --accent2: #0891b2;
+  --accent2-light: #22d3ee;
+  --accent3: #059669;
+  --accent3-light: #34d399;
+  --pink: #db2777;
+  --pink-light: #f472b6;
+  --orange: #d97706;
+  --orange-light: #fbbf24;
+  --text: #f1f5f9;
+  --text2: #cbd5e1;
+  --muted: #64748b;
+  --danger: #ef4444;
+  --radius: 14px;
+  --radius2: 20px;
+  --radius3: 24px;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 10% 0%, rgba(109,40,217,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 90% 100%, rgba(8,145,178,0.1) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 50% 50%, rgba(219,39,119,0.04) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#root { position: relative; z-index: 1; }
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-light); }
+
+textarea, input, select {
+  font-family: 'Fira Code', monospace;
+  background: var(--surface2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 13px 16px;
+  width: 100%;
+  font-size: 13px;
+  outline: none;
+  transition: all 0.3s ease;
+  resize: vertical;
+}
+
+textarea:focus, input:focus, select:focus {
+  border-color: var(--accent-light);
+  box-shadow: 0 0 0 3px rgba(109,40,217,0.2), 0 0 20px rgba(109,40,217,0.1);
+  background: var(--surface3);
+}
+
+select option { background: var(--surface3); }
+
+button {
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius);
+  padding: 10px 20px;
+  font-size: 14px;
+  transition: all 0.25s ease;
+}
+
+button:hover { transform: translateY(-2px); }
+button:active { transform: scale(0.97) translateY(0); }
+button:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
