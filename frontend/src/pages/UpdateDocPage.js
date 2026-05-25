@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import DocOutput from "../components/DocOutput";
+import API_BASE from "../config";
 import "./Page.css";
 
 export default function UpdateDocPage() {
@@ -15,7 +16,7 @@ export default function UpdateDocPage() {
     if (!existingDoc.trim() || !newCode.trim()) return;
     setLoading(true); setError(""); setDoc("");
     try {
-      const { data } = await axios.post("/api/docs/update", { existingDoc, newCode, language });
+      const { data } = await axios.post(`${API_BASE}/api/docs/update`, { existingDoc, newCode, language });
       setDoc(data.doc);
     } catch (e) {
       setError(e.response?.data?.error || "Failed to connect to server.");

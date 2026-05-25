@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import DocOutput from "../components/DocOutput";
+import API_BASE from "../config";
 import "./Page.css";
 
 const LANGUAGES = ["auto-detect","javascript","typescript","python","java","go","rust","c","c++","c#","php","ruby","swift","kotlin","sql","shell"];
@@ -17,7 +18,7 @@ export default function CodeDocPage() {
     if (!code.trim()) return;
     setLoading(true); setError(""); setDoc("");
     try {
-      const { data } = await axios.post("/api/docs/generate", { code, language, filename });
+      const { data } = await axios.post(`${API_BASE}/api/docs/generate`, { code, language, filename });
       setDoc(data.doc);
     } catch (e) {
       setError(e.response?.data?.error || "Failed to connect to server. Make sure backend is running.");
